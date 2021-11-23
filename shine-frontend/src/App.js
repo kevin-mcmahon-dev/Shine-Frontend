@@ -1,11 +1,12 @@
 import './App.css';
 import Header from "./components/Header";
-import Routes from "./config/routes";
+import RouteWrapper from "./config/routing";
 
 function App() {
   return (
     <div className="App">
-      <Header />
+        <Header />
+        <RouteWrapper />
     </div>
   );
 }
