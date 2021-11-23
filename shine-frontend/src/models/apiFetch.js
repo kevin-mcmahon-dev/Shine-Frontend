@@ -9,6 +9,10 @@ class DataModel {
     static show = (id) => {
         return fetch(`${url}/${id}`).then(res => res.json())
     }
+
+    static conversationShow = (id) => {
+        return fetch(`${url}/conversations/${id}`).then(res => res.json())
+    }
 }
 
 export default DataModel

@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route, useParams} from "react-router-d
 
 import Home from "../pages/Home";
 import Conversations from "../pages/Conversations";
+import ConversationShow from "../pages/ConversationShow";
 import Account from "../pages/Account";
 import Login from "../pages/Login";
 import NewUser from "../pages/NewUser";
@@ -18,6 +19,7 @@ const Routing = () => {
         <Routes >
           <Route path='/' element={ < Home /> } />
           <Route path='/conversations' element={ < Conversations /> }/>
+          <Route path='/conversations/:id' element={ <ConversationShow /> }/>
           <Route path='/:id' element={ < Account /> }/>
           <Route path='/login' element={ < Login /> }/>
           <Route path='/sign-up' element={ < NewUser /> }/>
@@ -42,19 +44,5 @@ const Routing = () => {
       // {/* )} */}
 
   };
-  
-// const RouteWrapper = () => {
-//   return (
-//     <Router>
-//       <Routes />
-//     </Router>
-//   )
-// }
-// export default RouteWrapper;
-
-// function Params() {
-//   let params = useParams();
-//   return params;
-// }
 
 export default Routing;
