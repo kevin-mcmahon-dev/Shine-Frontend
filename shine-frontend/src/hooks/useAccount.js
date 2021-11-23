@@ -19,3 +19,5 @@ function useAccount(id) {
         }, [id]
     );
 }
+
+export default useAccount;

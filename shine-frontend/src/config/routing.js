@@ -16,7 +16,7 @@ const Routing = () => {
     let routes = useRoutes([
       { path: '/', element: < Home /> },
       { path: '/conversations', element: < Conversations /> },
-      { path: '/account', element: < Account /> },
+      { path: '/:id', element: < Account /> },
       { path: '/login', element: < Login /> },
       { path: '/sign-up', element: < NewUser /> },
       // {/* wrap the routes in a conditional check so that they will only be available if the user state is true */}
@@ -41,4 +41,4 @@ const RouteWrapper = () => {
     </Router>
   )
 }
-  export default RouteWrapper;
+export default RouteWrapper;
