@@ -1,4 +1,4 @@
-const url = 'mongodb://localhost:4000/api/shine'
+const url = 'http://localhost:4000/api/v1'
 
 class DataModel {
     static all = () => {

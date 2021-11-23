@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useRoutes} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useParams} from "react-router-dom";
 
 import Home from "../pages/Home";
 import Conversations from "../pages/Conversations";
@@ -13,12 +13,22 @@ const Routing = () => {
     // set the returned value of useRecoilValue to a variable
     // const loggedIn = useRecoilValue(loggedInState);
   
-    let routes = useRoutes([
-      { path: '/', element: < Home /> },
-      { path: '/conversations', element: < Conversations /> },
-      { path: '/:id', element: < Account /> },
-      { path: '/login', element: < Login /> },
-      { path: '/sign-up', element: < NewUser /> },
+    return (
+      <Router > 
+        <Routes >
+          <Route path='/' element={ < Home /> } />
+          <Route path='/conversations' element={ < Conversations /> }/>
+          <Route path='/:id' element={ < Account /> }/>
+          <Route path='/login' element={ < Login /> }/>
+          <Route path='/sign-up' element={ < NewUser /> }/>
+        </Routes>
+      </Router> 
+    )
+      // { path: '/', element: < Home /> },
+      // { path: '/conversations', element: < Conversations /> },
+      // { path: '/:id', element: < Account /> },
+      // { path: '/login', element: < Login /> },
+      // { path: '/sign-up', element: < NewUser /> },
       // {/* wrap the routes in a conditional check so that they will only be available if the user state is true */}
       // {/* {loggedIn && ( */}
       //   {/* <Routes> */}
@@ -30,15 +40,21 @@ const Routing = () => {
       //     // <Route path='/sign-up' element= { <NewUser />} />
       //   {/* </Routes> */}
       // {/* )} */}
-    ])
-    return routes;
+
   };
   
-const RouteWrapper = () => {
-  return (
-    <Router>
-      <Routing />
-    </Router>
-  )
-}
-export default RouteWrapper;
+// const RouteWrapper = () => {
+//   return (
+//     <Router>
+//       <Routes />
+//     </Router>
+//   )
+// }
+// export default RouteWrapper;
+
+// function Params() {
+//   let params = useParams();
+//   return params;
+// }
+
+export default Routing;

@@ -6,11 +6,13 @@ function useAccount(id) {
     const [user, setUser] = useState([]);
 
     function fetchUser(id) {
-        if (id) {
+        // if (id) {
             DataModel.show(id).then((data) => {
+                console.log(data);
+                console.log(id);
                 setUser(data.user);
             })
-        }
+        // }
     }
 
     useEffect(

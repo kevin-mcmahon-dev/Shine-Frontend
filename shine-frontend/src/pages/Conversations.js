@@ -7,17 +7,22 @@ const Conversations = (props) => {
 
     useEffect(
         function () {
+            console.log("I'm using effect");
             fetchConversations();
         }, []
     )
 
     function fetchConversations() {
+        console.log("I'm fetching conversations");
         DataModel.all().then((data) => {
+            console.log(data);
+            console.log(data.conversations);
             setConversations(data.conversations);
         });
     }
 
     function generateList(conversations) {
+        console.log(conversations);
         return conversations.map((conversation, index) => (
             <h1>{conversation.name}</h1>
         ));
