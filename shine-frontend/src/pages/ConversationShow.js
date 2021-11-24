@@ -21,15 +21,20 @@ const ConversationShow = () => {
         DataModel.conversationShow(id).then((data) => {
             // console.log(data);
             console.log(id);
+            console.log(data);
             setConversation(data.conversation);
         })
     }
-    console.log(user);
+    console.log(conversation);
+    console.log(conversation.name);
+    console.log(conversation._id);
+    console.log(conversation.avatar);
+    console.log(conversation.user);
     return (
     <>
         <div>
             <h1>Welcome to {conversation.name} Conversation</h1>
-            <h4>Name: {conversation.user}</h4>
+            {/* <img src={conversation.avatar}></img> */}
         </div>
     </>
     );
