@@ -27,12 +27,12 @@ const Conversations = (props) => {
             <h1>{conversation.name}</h1>
         ));
     }
-  return (
-    <div>
-        <h1>Welcome to the Conversations Page</h1>
-        {generateList(conversations)}
-    </div>
-  );
+    return (
+        <div>
+            <h1>Welcome to the Conversations Page</h1>
+            {generateList(conversations)}
+        </div>
+    );
 }
 
 export default Conversations;

@@ -26,11 +26,7 @@ const Routing = () => {
         </Routes>
       </Router> 
     )
-      // { path: '/', element: < Home /> },
-      // { path: '/conversations', element: < Conversations /> },
-      // { path: '/:id', element: < Account /> },
-      // { path: '/login', element: < Login /> },
-      // { path: '/sign-up', element: < NewUser /> },
+
       // {/* wrap the routes in a conditional check so that they will only be available if the user state is true */}
       // {/* {loggedIn && ( */}
       //   {/* <Routes> */}

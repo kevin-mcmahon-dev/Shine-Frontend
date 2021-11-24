@@ -30,13 +30,14 @@ const ConversationShow = () => {
     console.log(conversation._id);
     console.log(conversation.avatar);
     console.log(conversation.user);
+    
     return (
-    <>
-        <div>
-            <h1>Welcome to {conversation.name} Conversation</h1>
-            {/* <img src={conversation.avatar}></img> */}
-        </div>
-    </>
+        <>
+            <div>
+                <h1>Welcome to {conversation.name} Conversation</h1>
+                {/* <img src={conversation.avatar}></img> */}
+            </div>
+        </>
     );
 }
 
