@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import DataModel from "../models/apiFetch";
+import DataModel from "../models/conversations";
 
 function useAccount(id) {
     const [user, setUser] = useState([]);
