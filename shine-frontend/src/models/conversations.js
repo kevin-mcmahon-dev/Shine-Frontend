@@ -16,18 +16,31 @@ class DataModel {
         return fetch(`${url}/${id}`).then(res => res.json())
     }
 
-    // static createMessage = (id) => {
-    //     return fetch(`${url}/${id}`, {
-    //         method: 'POST',
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         },
-    //     })
-    //     .then(res => {
-    //         body: JSON.stringify(id)
-    //         res.json()
-    //     })
-    // }
+    static createMessage = (id, data) => {
+        return fetch(`${url}/${id}`, {
+            method: 'PUT',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+        .then(res => {
+            res.json()
+        })
+    }
+
+    static conversationDelete = (id) => {
+        return fetch(`${url}/${id}`, {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            // body: JSON.stringify(data)
+        })
+        .then(res => {
+            res.json()
+        })
+    }
 }
 
 export default DataModel

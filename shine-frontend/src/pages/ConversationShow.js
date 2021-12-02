@@ -3,15 +3,16 @@ import DataModel from '../models/conversations';
 import authorizationModel from '../models/authorization';
 // import useAccount from "../hooks/useAccount";
 // import {Params} from "../config/routing";
-import {useParams} from "react-router-dom";
+import {useParams, useNavigate} from "react-router-dom";
 
 const ConversationShow = () => {
     const {id} = useParams();
     // console.log(id);
     const [conversation, setConversation] = useState([]);
     const [user, setUser] = useState("");
-    // const [content, setContent] = useState("");
-    // const nav = useNavigate();
+    const [content, setContent] = useState({});
+    // content: ""
+    const nav = useNavigate();
     // console.log({id});
     console.log(id)
 
@@ -57,13 +58,8 @@ const ConversationShow = () => {
     }
     console.log(conversation.messages);
     const messageArray = conversation.messages
-    // const messagesMapped = messageArray.map((message, index) => {
-    //     return message._id
-    // })
-    // console.log(messagesMapped);
 
-    let mapResult
-
+    
     function generateMessageList(inputMessages) {
         if (inputMessages) {
             // const objectToArray = Object.values(input);
@@ -79,18 +75,29 @@ const ConversationShow = () => {
         }
     }
 
-    // function handleSubmit(event) {
-    //     event.preventDefault();
+    console.log(typeof content);
+    console.log(id);
+    function handleSubmit(event) {
+        event.preventDefault();
 
-    //     DataModel.createMessage(id).then((response) => {
-    //         console.log(response);
-    //         // localStorage.setItem("uid", response.signedJwt);
-    //         if (response.status === 200) {
-    //             console.log("Wow");
-    //             nav('/')
-    //         }
-    //     })
-    // }
+        DataModel.createMessage(id, {content: "hello"}).then((response) => {
+            console.log(response);
+            // localStorage.setItem("uid", response.signedJwt);
+            if (response.status === 200) {
+                console.log("Wow");
+                nav('/')
+            }
+            // generateMessageList(conversation.messages)
+        })
+    }
+
+    function handleDelete(event) {
+        event.preventDefault();
+
+        DataModel.conversationDelete(id).then((response) => {
+            nav(`/profile`)
+        })
+    }
 
     return (
         <>
@@ -102,6 +109,21 @@ const ConversationShow = () => {
                 {/* <h2>{conversation.user[0].name}</h2> */}
                 {/* <img src={conversation.avatar}></img> */}
             </div>
+
+            <form onSubmit={(event) => handleSubmit(event)}>
+            <div className='input-field'>
+					{/* <label htmlFor='content'>Content</label> */}
+					<input type='text'
+						name='content'
+						onChange={(e) => setContent(e.target.value)}
+						value={content}
+					/>
+				</div>
+                <input type='submit' value='Send Message' />
+            </form>
+            <form onSubmit={(event) => handleDelete(event)}>
+                <input type='submit' value='Delete Conversation' />
+            </form>
         </>
     );
 }
