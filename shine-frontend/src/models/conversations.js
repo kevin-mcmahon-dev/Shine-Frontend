@@ -26,11 +26,11 @@ class DataModel {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify({"content": data})
         })
         .then(res => {
             console.log(res)
-            res.json()
+            return res.json()
         })
     }
 

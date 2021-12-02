@@ -67,8 +67,12 @@ const ConversationShow = () => {
             return inputMessages.map((input, index) => (
                 
                     <div>
-                        <p>{input.user.name}</p>
-                        <p>{input.content}</p>
+                        {input.user ? 
+                            <div>
+                            <p>{input.user.name}</p> 
+                            <p>{input.content} </p>
+                            </div>
+                            : <p>{input.content} </p>}
                     </div>
                 
             ));
@@ -87,7 +91,8 @@ const ConversationShow = () => {
             // localStorage.setItem("uid", response.signedJwt);
             if (response.status === 200) {
                 console.log("Wow");
-                nav(`/conversations/${id}`)
+                fetchConversation()
+                fetchUser()
             }
             // generateMessageList(conversation.messages)
         })

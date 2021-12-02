@@ -45,8 +45,8 @@ const Profile = () => {
     // const objectToArray = Object.values(conversationArray);
     if (conversationArray) {
         const objectToArray = Object.values(conversationArray);
-        console.log(objectToArray)
-        console.log(objectToArray[0].name)
+        // console.log(objectToArray)
+        // console.log(objectToArray[0].name)
     }
 
     return (
