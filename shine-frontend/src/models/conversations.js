@@ -17,7 +17,11 @@ class DataModel {
     }
 
     static createMessage = (id, data) => {
-        return fetch(`${url}/${id}`, {
+        console.log(typeof data)
+        console.log(typeof id)
+        console.log(`${url}/${id}`)
+
+        return fetch(`http://localhost:4000/api/v1/conversations/61a8138c582b732fe69542e5`, {
             method: 'PUT',
             headers: {
                 "Content-Type": "application/json"
@@ -25,6 +29,7 @@ class DataModel {
             body: JSON.stringify(data)
         })
         .then(res => {
+            console.log(res)
             res.json()
         })
     }
