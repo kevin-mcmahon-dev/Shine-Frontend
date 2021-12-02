@@ -15,6 +15,19 @@ class DataModel {
     static conversationShow = (id) => {  
         return fetch(`${url}/${id}`).then(res => res.json())
     }
+
+    // static createMessage = (id) => {
+    //     return fetch(`${url}/${id}`, {
+    //         method: 'POST',
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         },
+    //     })
+    //     .then(res => {
+    //         body: JSON.stringify(id)
+    //         res.json()
+    //     })
+    // }
 }
 
 export default DataModel
