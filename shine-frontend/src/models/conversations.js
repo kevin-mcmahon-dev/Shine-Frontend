@@ -21,7 +21,7 @@ class DataModel {
         console.log(typeof id)
         console.log(`${url}/${id}`)
 
-        return fetch(`http://localhost:4000/api/v1/conversations/61a8138c582b732fe69542e5`, {
+        return fetch(`${url}/${id}`, {
             method: 'PUT',
             headers: {
                 "Content-Type": "application/json"
