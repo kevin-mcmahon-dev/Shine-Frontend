@@ -67,25 +67,32 @@ const ConversationShow = () => {
             return inputMessages.map((input, index) => (
                 
                     <div>
-                        <p>{input.user.name}</p>
-                        <p>{input.content}</p>
+                        {input.user ? 
+                            <div>
+                            <p>{input.user.name}</p> 
+                            <p>{input.content} </p>
+                            </div>
+                            : <p>{input.content} </p>}
                     </div>
                 
             ));
         }
     }
 
-    console.log(typeof content);
+    console.log(content);
     console.log(id);
     function handleSubmit(event) {
         event.preventDefault();
 
-        DataModel.createMessage(id, {content: "hello"}).then((response) => {
+        // (id, {content: "hello"})
+        DataModel.createMessage(id, content).then((response) => {
             console.log(response);
+            console.log(content);
             // localStorage.setItem("uid", response.signedJwt);
             if (response.status === 200) {
                 console.log("Wow");
-                nav('/')
+                fetchConversation()
+                fetchUser()
             }
             // generateMessageList(conversation.messages)
         })
@@ -102,7 +109,7 @@ const ConversationShow = () => {
     return (
         <>
             <div>
-                <h1>Conversation with: | {generateUserList(userArray)}</h1>
+                <h1>Conversation with | {generateUserList(userArray)}</h1>
                 {generateMessageList(conversation.messages)}
                 {/* <div>{generateMessageList(messageArray)} </div> */}
                 {/* {JSON.stringify(conversation, null, 2)} */}

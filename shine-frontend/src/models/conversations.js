@@ -17,15 +17,20 @@ class DataModel {
     }
 
     static createMessage = (id, data) => {
+        console.log(typeof data)
+        console.log(typeof id)
+        console.log(`${url}/${id}`)
+
         return fetch(`${url}/${id}`, {
             method: 'PUT',
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify({"content": data})
         })
         .then(res => {
-            res.json()
+            console.log(res)
+            return res.json()
         })
     }
 
