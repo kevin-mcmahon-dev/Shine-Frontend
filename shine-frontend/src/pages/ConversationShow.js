@@ -78,7 +78,7 @@ const ConversationShow = () => {
     }
 
     console.log(content);
-    console.log(id);
+    console.log(user._id);
     function handleSubmit(event) {
         event.preventDefault();
 

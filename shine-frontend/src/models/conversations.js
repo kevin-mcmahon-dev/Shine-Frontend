@@ -21,7 +21,8 @@ class DataModel {
         console.log(typeof id)
         console.log(`${url}/${id}`)
 
-        return fetch(`http://localhost:4000/api/v1/conversations/61a8138c582b732fe69542e5`, {
+        return fetch(`${url}/${id}`, {
+            // credentials: "include",
             method: 'PUT',
             headers: {
                 "Content-Type": "application/json"
@@ -38,7 +39,8 @@ class DataModel {
         return fetch(`${url}/${id}`, {
             method: 'DELETE',
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Accept": "application/json"
             },
             // body: JSON.stringify(data)
         })
