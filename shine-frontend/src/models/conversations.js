@@ -24,7 +24,9 @@ class DataModel {
         return fetch(`${url}/${id}`, {
             method: 'PUT',
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                // authorization: `Bearer ${localStorage.uid}`,
+                // ^ From authorization.js for profile show page.
             },
             body: JSON.stringify({"content": data})
         })
@@ -38,7 +40,7 @@ class DataModel {
         return fetch(`${url}/${id}`, {
             method: 'DELETE',
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
             },
             // body: JSON.stringify(data)
         })
