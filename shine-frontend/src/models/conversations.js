@@ -25,7 +25,9 @@ class DataModel {
             // credentials: "include",
             method: 'PUT',
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                authorization: `Bearer ${localStorage.uid}`,
+                // ^ From authorization.js for profile show page.
             },
             body: JSON.stringify({"content": data})
         })

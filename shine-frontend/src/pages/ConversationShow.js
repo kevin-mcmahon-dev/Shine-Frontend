@@ -87,11 +87,13 @@ const ConversationShow = () => {
             console.log(response);
             console.log(content);
             // localStorage.setItem("uid", response.signedJwt);
-            if (response.status === 200) {
-                console.log("Wow");
-                fetchConversation()
-                fetchUser()
-            }
+            fetchConversation()
+            fetchUser()
+            // if (response.status === 200) {
+            //     console.log("Wow");
+            //     fetchConversation()
+            //     fetchUser()
+            // }
             // generateMessageList(conversation.messages)
         })
     }
