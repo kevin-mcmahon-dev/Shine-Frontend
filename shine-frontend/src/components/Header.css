@@ -1,0 +1,31 @@
+header {
+    background-color: blue;
+    display: flex;
+    flex-direction: row;
+    height: 60px;
+}
+.logo {
+    /* width: 50%; */
+    align-self: center;
+    /* justify-content: flex-start; */
+    flex-grow: 1;
+}
+.logo span {
+    margin-right: 85%;
+    text-decoration: none;
+}   
+.links {
+    /* width: 50%; */
+    align-self: center;
+}
+.linkContainer {
+    display: inline-block;
+    margin-right: 15px;
+}
+.spanHeader{
+    color: white;
+    text-decoration: none;
+    font-size: 28px;
+    font-weight: bold;
+    /* margin: 15px, 50px, 5px, 50px; */
+}

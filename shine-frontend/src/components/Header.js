@@ -1,5 +1,5 @@
 import React from "react";
-// import "./Header.css";
+import "./Header.css";
 import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -7,26 +7,23 @@ const Header = () => {
   return (
     <header>
       <div className='logo'>
-        Home
+      <Link to={`/`}>
+        <div className='spanHeader'><span>Home</span></div>
+      </Link>
       </div>
       <div className='links'>
-        <ul>
-              <li>
-                Hello User!
-              </li>
-              <li>
-                Conversations
-              </li>
-              <li>
-                My Account
-              </li>
-              <li className='btn' /*onClick={logout}*/>
-                Log Out
-              </li>
-              <li>
-                Settings
-              </li>
-        </ul>
+              <Link to={`/register`}>
+                    <div className='linkContainer spanHeader'><span>Register</span></div>
+              </Link>
+
+              <Link to={`/login`}>
+                    <div className='linkContainer spanHeader'><span>Login</span></div>
+              </Link>
+
+              <Link to={`/profile`}>
+                    <div className='linkContainer spanHeader'><span>Profile</span></div>
+              </Link>
+
       </div>
     </header>
   );
