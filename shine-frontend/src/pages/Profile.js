@@ -7,6 +7,9 @@ const Profile = () => {
     const [users, setUsers] = useState("");
     const [content, setContent] = useState({});
 
+    let convoCreationUsers = {
+        user: [`${user._id}`, `${content}`]
+    }
     console.log(user);
     console.log(content);
     // console.log(users);
@@ -48,11 +51,15 @@ const Profile = () => {
                 // //     <li></li>
                 // // }}
             <>
-                {(profile.username !== user.username) && <input type='radio'
-                name='content'
-                // onChange={(e) => setContent(e.target.value)}
-                value={profile.username}/>}
-                {/* {profile.username} */}
+                {(profile.username !== user.username) && 
+                <>
+                    <input type='radio'
+                    name='content'
+                    onChange={(e) => setContent(e.target.value)}
+                    value={profile._id}/>
+                    <label>{profile.username}</label>
+                </>}
+                {/* {content} */}
             </>
             ));
         }
@@ -63,7 +70,7 @@ const Profile = () => {
 
         // (id, {content: "hello"})
         // authorizationModel.conversationCreate(user._id, content) --> two params instead?
-        authorizationModel.conversationCreate(content).then((response) => {
+        authorizationModel.conversationCreate(convoCreationUsers).then((response) => {
             // content = {
             //     user: [user._id, ]
             // }
