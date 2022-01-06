@@ -36,7 +36,15 @@ const Profile = () => {
     function generateUserList(input) {
         if (input) {
             return input.map((profile, index) => (
-                <li>{profile.username}</li>
+                <>
+                {/* {profile.username !== user.username ? profile.username : ""} */}
+                {(profile.username !== user.username) && <li>{profile.username}</li> }
+                </>
+                // {if (profile.username !== user.username) {
+                //     <li>{profile.username}</li>
+                // } else {
+                //     <li></li>
+                // }}
             ));
         }
     }
