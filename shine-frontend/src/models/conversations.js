@@ -27,7 +27,6 @@ class DataModel {
             headers: {
                 "Content-Type": "application/json",
                 authorization: `Bearer ${localStorage.uid}`,
-                // ^ From authorization.js for profile show page.
             },
             body: JSON.stringify({"content": data})
         })

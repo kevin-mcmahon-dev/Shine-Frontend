@@ -30,6 +30,17 @@ class authorizationModel {
             body: JSON.stringify(data),
         }).then((res) => res.json());
     };
+
+    static conversationCreate = (data) => {
+        return fetch(`${url}/profile`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                authorization: `Bearer ${localStorage.uid}`,
+            },
+            body: JSON.stringify(data),
+        }).then((res) => res.json());
+    };
 }
     
 export default authorizationModel;
