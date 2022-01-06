@@ -36,6 +36,7 @@ const Profile = () => {
                 </Link>
             ));
         }
+        // fetchUser()
     }
     
     function generateUserList(input) {
@@ -70,14 +71,22 @@ const Profile = () => {
 
         // (id, {content: "hello"})
         // authorizationModel.conversationCreate(user._id, content) --> two params instead?
+        let newConvoId
         authorizationModel.conversationCreate(convoCreationUsers).then((response) => {
             // content = {
             //     user: [user._id, ]
             // }
-            console.log(response);
+            console.log(response.conversation._id);
+            console.log(response.conversation.user);
+            // newConvoId = response.conversation._id
             console.log(content);
+            authorizationModel.accountUpdate()
             fetchUser()
         })
+
+        fetchUser()
+        // Run account update function simultaneously
+        // authorizationModel.accountUpdate()
     }
 
     return (

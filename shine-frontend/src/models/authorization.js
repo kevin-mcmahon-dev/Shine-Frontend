@@ -42,17 +42,17 @@ class authorizationModel {
         }).then((res) => res.json());
     };
 
-    // static accountUpdate = (data) => {
-    //     return fetch(`${url}/${profile}`, {
-    //         // credentials: "include",
-    //         method: 'PUT',
-    //         body: JSON.stringify({"content": data})
-    //     })
-    //     .then(res => {
-    //         console.log(res)
-    //         return res.json()
-    //     })
-    // }
+    static accountUpdate = (data) => {
+        return fetch(`${url}/profile`, {
+            // credentials: "include",
+            method: 'PUT',
+            headers: {
+                "Content-Type": "application/json",
+                authorization: `Bearer ${localStorage.uid}`,
+            },
+            body: JSON.stringify(data)
+        }).then((res) => res.json());
+    }
 }
     
 export default authorizationModel;
