@@ -24,10 +24,6 @@ class DataModel {
         return fetch(`${url}/${id}`, {
             // credentials: "include",
             method: 'PUT',
-            headers: {
-                "Content-Type": "application/json",
-                authorization: `Bearer ${localStorage.uid}`,
-            },
             body: JSON.stringify({"content": data})
         })
         .then(res => {

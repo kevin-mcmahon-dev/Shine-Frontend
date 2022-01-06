@@ -5,8 +5,10 @@ import {BrowserRouter as Router, useParams, Link} from "react-router-dom";
 const Profile = () => {
     const [user, setUser] = useState("");
     const [users, setUsers] = useState("");
+    const [content, setContent] = useState({});
 
-    // console.log(user);
+    console.log(user);
+    console.log(content);
     // console.log(users);
 
     useEffect(function() {
@@ -36,17 +38,39 @@ const Profile = () => {
     function generateUserList(input) {
         if (input) {
             return input.map((profile, index) => (
-                <>
-                {/* {profile.username !== user.username ? profile.username : ""} */}
-                {(profile.username !== user.username) && <li>{profile.username}</li> }
-                </>
-                // {if (profile.username !== user.username) {
-                //     <li>{profile.username}</li>
-                // } else {
-                //     <li></li>
-                // }}
+                // <>
+                // {/* {profile.username !== user.username ? profile.username : ""} */}
+                // {(profile.username !== user.username) && <li>{profile.username}</li> }
+                // </>
+                // // {if (profile.username !== user.username) {
+                // //     <li>{profile.username}</li>
+                // // } else {
+                // //     <li></li>
+                // // }}
+            <>
+                {(profile.username !== user.username) && <input type='radio'
+                name='content'
+                // onChange={(e) => setContent(e.target.value)}
+                value={profile.username}/>}
+                {/* {profile.username} */}
+            </>
             ));
         }
+    }
+
+    function handleSubmit(event) {
+        event.preventDefault();
+
+        // (id, {content: "hello"})
+        // authorizationModel.conversationCreate(user._id, content) --> two params instead?
+        authorizationModel.conversationCreate(content).then((response) => {
+            // content = {
+            //     user: [user._id, ]
+            // }
+            console.log(response);
+            console.log(content);
+            fetchUser()
+        })
     }
 
     return (
@@ -59,6 +83,17 @@ const Profile = () => {
             <ul>
                 {generateUserList(users)}
             </ul>
+            <form onSubmit={(event) => handleSubmit(event)}>
+                <div className='input-field'>
+					{/* <label htmlFor='content'>Content</label> */}
+					{/* <input type='radio'
+						name='content'
+						onChange={(e) => setContent(e.target.value)}
+						value={content}
+					/> */}
+			    </div>
+                <input type='submit' value='Start Talking!' />
+            </form>
         </div>
     </>
     );
