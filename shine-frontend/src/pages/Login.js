@@ -16,7 +16,7 @@ const Login = () => {
             localStorage.setItem("uid", response.token);
             console.log(response.token);
             if (response.status === 200) {
-                nav('/')
+                nav('/profile')
             }
         })
     }

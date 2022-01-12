@@ -29,6 +29,7 @@ const Profile = () => {
     const conversationArray = user.conversation;
 
     function generateList(input) {
+        // console.log(user.conversation)
         if (input) {
             return input.map((conversation, index) => (
                 <Link to={`/conversations/${conversation._id}`}>
@@ -85,8 +86,6 @@ const Profile = () => {
         })
 
         fetchUser()
-        // Run account update function simultaneously
-        // authorizationModel.accountUpdate()
     }
 
     return (
@@ -96,17 +95,12 @@ const Profile = () => {
             <h4>Name: {user.name}</h4>
             {generateList(conversationArray)}
             <h2>All Users:</h2>
-            <ul>
+            {/* <ul>
                 {generateUserList(users)}
-            </ul>
+            </ul> */}
             <form onSubmit={(event) => handleSubmit(event)}>
                 <div className='input-field'>
-					{/* <label htmlFor='content'>Content</label> */}
-					{/* <input type='radio'
-						name='content'
-						onChange={(e) => setContent(e.target.value)}
-						value={content}
-					/> */}
+                    {generateUserList(users)}
 			    </div>
                 <input type='submit' value='Start Talking!' />
             </form>
