@@ -27,11 +27,30 @@ const Profile = () => {
     }
 
     const conversationArray = user.conversation;
+    console.log(conversationArray)
+    // Trying to remove duplicate convo entries
+    // let conversationArray = new Set()
+    // let userArray
+
+    // for (let i = 0; i < user.conversation.length; i++) {
+    //     conversationArray.add(user.converation[i].user)
+    //     userArray = conversationArray.from(conversationArray)
+    // }
+    // console.log(conversationArray)
+    // console.log(userArray)
 
     function generateList(input) {
         // console.log(user.conversation)
         if (input) {
-            return input.map((conversation, index) => (
+            let userList = new Set()
+            const convoList = input.filter(element => {
+                if (userList.has(element.user[1]) === false) {
+                    userList.add(element.user[1])
+                    return element.user[1]
+                }
+            });
+
+            return convoList.map((conversation, index) => (
                 <Link to={`/conversations/${conversation._id}`}>
                     <h3>{conversation.name}</h3>
                 </Link>
@@ -72,7 +91,6 @@ const Profile = () => {
 
         // (id, {content: "hello"})
         // authorizationModel.conversationCreate(user._id, content) --> two params instead?
-        let newConvoId
         authorizationModel.conversationCreate(convoCreationUsers).then((response) => {
             // content = {
             //     user: [user._id, ]
@@ -82,7 +100,7 @@ const Profile = () => {
             // newConvoId = response.conversation._id
             console.log(content);
             authorizationModel.accountUpdate()
-            fetchUser()
+            // fetchUser() /* redundant */
         })
 
         fetchUser()
