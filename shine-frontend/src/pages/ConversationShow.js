@@ -62,17 +62,77 @@ const ConversationShow = () => {
     
     function generateMessageList(inputMessages) {
         if (inputMessages) {
-            // const objectToArray = Object.values(input);
-            // console.log(typeof inputMessages);
-            return inputMessages.map((input, index) => (
+            let newArr = inputMessages.map((input, index) => {
+                if (input.user._id === user._id) {
+                    return {
+                        _id: input.user._id,
+                        user: input.user.name,
+                        content: input.content
+                    }
+                } else if (input.user) {
+                    return {
+                        _id: input.user._id,
+                        user: input.user.name,
+                        content: input.content
+                    }
+                } else {
+                    return {
+                        _id: null,
+                        user: null,
+                        content: input.content
+                    }
+                }
+            })
+            console.log(newArr)
+            // let placeholder
+            // if (input.user._id === user._id) {
+            //     placeholder = <>
+            //         <p style={{ color: 'red' }}>{input.user.name}</p> 
+            //         <p style={{ color: 'red' }}>{input.content} </p>
+            //     </>
+            // } else if (input.user) {
+            //     placeholder = <>
+            //         <p>{input.user.name}</p> 
+            //         <p>{input.content} </p>
+            //     </>
+            // } else {
+            //     placeholder = <p>{input.content} </p>
+            // }
+            return newArr.map((input, index) => (
                 <div>
-                {input.user ? 
+                    {/* style={{ textDecoration: 'none' }} */}
+                    {/* {if (input.user === user) {
+                        <>
+                            <p style={{ color: 'red' }}>{input.user.name}</p> 
+                            <p style={{ color: 'red' }}>{input.content} </p>
+                        </>
+                    } else if (input.user) {
+                        <>
+                            <p>{input.user.name}</p> 
+                            <p>{input.content} </p>
+                        </>
+                    } else {
+                        <p>{input.content} </p>
+                    }} */}
+            
+                {/* Working one */}
+                {input._id === user._id ? 
+                    <div>
+                        <p style={{ color: 'red' }}>{input.user}</p> 
+                        <p style={{ color: 'red' }}>{input.content} </p>
+                    </div>
+                    : <div>
+                        <p>{input.user}</p> 
+                        <p>{input.content} </p>
+                    </div>}
+            
+                {/* {input.user ? 
                     <div>
                     <p>{input.user.name}</p> 
                     <p>{input.content} </p>
                     </div>
-                    : <p>{input.content} </p>}
-            </div>
+                    : <p>{input.content} </p>} */}
+                </div>
             ));
         }
     }
@@ -118,18 +178,21 @@ const ConversationShow = () => {
             </div>
 
             <form onSubmit={(event) => handleSubmit(event)}>
-            <div className='input-field'>
+                <div className='input-field form-group'>
 					{/* <label htmlFor='content'>Content</label> */}
 					<input type='text'
 						name='content'
+                        className='form-control'
+                        placeholder='Message'
 						onChange={(e) => setContent(e.target.value)}
 						value={content}
 					/>
 				</div>
-                <input type='submit' value='Send Message' />
+                {/* <input type='submit' value='Send Message' /> */}
+                <button type='submit' className='btn btn-primary'>Send Message</button>
             </form>
             <form onSubmit={(event) => handleDelete(event)}>
-                <input type='submit' value='Delete Conversation' />
+                <button type='submit' className='btn btn-danger'>Delete Conversation</button>
             </form>
         </>
     );
