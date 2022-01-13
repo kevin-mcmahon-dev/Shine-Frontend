@@ -65,22 +65,20 @@ const ConversationShow = () => {
             // const objectToArray = Object.values(input);
             // console.log(typeof inputMessages);
             return inputMessages.map((input, index) => (
-                
+                <div>
+                {input.user ? 
                     <div>
-                        {input.user ? 
-                            <div>
-                            <p>{input.user.name}</p> 
-                            <p>{input.content} </p>
-                            </div>
-                            : <p>{input.content} </p>}
+                    <p>{input.user.name}</p> 
+                    <p>{input.content} </p>
                     </div>
-                
+                    : <p>{input.content} </p>}
+            </div>
             ));
         }
     }
 
     console.log(content);
-    console.log(id);
+    console.log(user._id);
     function handleSubmit(event) {
         event.preventDefault();
 
@@ -89,11 +87,13 @@ const ConversationShow = () => {
             console.log(response);
             console.log(content);
             // localStorage.setItem("uid", response.signedJwt);
-            if (response.status === 200) {
-                console.log("Wow");
-                fetchConversation()
-                fetchUser()
-            }
+            fetchConversation()
+            fetchUser()
+            // if (response.status === 200) {
+            //     console.log("Wow");
+            //     fetchConversation()
+            //     fetchUser()
+            // }
             // generateMessageList(conversation.messages)
         })
     }
