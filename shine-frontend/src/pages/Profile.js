@@ -43,12 +43,18 @@ const Profile = () => {
         // console.log(user.conversation)
         if (input) {
             let userList = new Set()
-            const convoList = input.filter(element => {
-                if (userList.has(element.user[1]) === false) {
-                    userList.add(element.user[1])
-                    return element.user[1]
+            let convoList = []
+
+            for (let i = 0; i < input.length; i++) {
+                for (let j = 0; j < 2; j++) {
+                    if (userList.has(input[i].user[j]) === false) {
+                        if (input[i].user[j] !== user._id) {
+                            userList.add(input[i].user[j])
+                            convoList.push(input[i])
+                        }
+                    }
                 }
-            });
+            }
 
             return convoList.map((conversation, index) => (
                 <Link to={`/conversations/${conversation._id}`}>
