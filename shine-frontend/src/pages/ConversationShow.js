@@ -21,6 +21,7 @@ const ConversationShow = () => {
         console.log("I'm using Effect")
         fetchConversation()
         fetchUser()
+        fetchContent()
     }, [])
 
     useEffect(function() {
@@ -36,6 +37,9 @@ const ConversationShow = () => {
             console.log(data.conversation);
             setConversation(data.conversation);
         })
+    }
+    function fetchContent() {
+        setContent("Enter Message")
     }
 
     function fetchUser() {
@@ -108,6 +112,7 @@ const ConversationShow = () => {
             // localStorage.setItem("uid", response.signedJwt);
             fetchConversation()
             fetchUser()
+            fetchContent()
             // if (response.status === 200) {
             //     console.log("Wow");
             //     fetchConversation()
