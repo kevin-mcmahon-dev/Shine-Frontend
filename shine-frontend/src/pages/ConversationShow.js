@@ -4,6 +4,7 @@ import authorizationModel from '../models/authorization';
 // import useAccount from "../hooks/useAccount";
 // import {Params} from "../config/routing";
 import {useParams, useNavigate} from "react-router-dom";
+import "./ConversationShow.css"
 
 const ConversationShow = () => {
     const {id} = useParams();
@@ -51,88 +52,46 @@ const ConversationShow = () => {
         if (input) {
             // const objectToArray = Object.values(input);
 
-            return input.map((user, index) => (
-                <span> {user.name} | </span>
+            return input.map((profile, index) => (
+                <>
+                {profile._id !== user._id ? <span>{profile.username}</span> : null}
+                </>
             ));
         }
     }
     console.log(conversation.messages);
     const messageArray = conversation.messages
-
     
     function generateMessageList(inputMessages) {
         if (inputMessages) {
             let newArr = inputMessages.map((input, index) => {
-                if (input.user._id === user._id) {
+                if (index >= 1 && inputMessages[index - 1].user._id === input.user._id) {
                     return {
                         _id: input.user._id,
-                        user: input.user.name,
-                        content: input.content
-                    }
-                } else if (input.user) {
-                    return {
-                        _id: input.user._id,
-                        user: input.user.name,
                         content: input.content
                     }
                 } else {
                     return {
-                        _id: null,
-                        user: null,
+                        _id: input.user._id,
+                        user: input.user.name,
                         content: input.content
                     }
-                }
+                } 
             })
-            console.log(newArr)
-            // let placeholder
-            // if (input.user._id === user._id) {
-            //     placeholder = <>
-            //         <p style={{ color: 'red' }}>{input.user.name}</p> 
-            //         <p style={{ color: 'red' }}>{input.content} </p>
-            //     </>
-            // } else if (input.user) {
-            //     placeholder = <>
-            //         <p>{input.user.name}</p> 
-            //         <p>{input.content} </p>
-            //     </>
-            // } else {
-            //     placeholder = <p>{input.content} </p>
-            // }
+
             return newArr.map((input, index) => (
-                <div>
-                    {/* style={{ textDecoration: 'none' }} */}
-                    {/* {if (input.user === user) {
-                        <>
-                            <p style={{ color: 'red' }}>{input.user.name}</p> 
-                            <p style={{ color: 'red' }}>{input.content} </p>
-                        </>
-                    } else if (input.user) {
-                        <>
-                            <p>{input.user.name}</p> 
-                            <p>{input.content} </p>
-                        </>
-                    } else {
-                        <p>{input.content} </p>
-                    }} */}
-            
-                {/* Working one */}
+                <>
+
                 {input._id === user._id ? 
-                    <div>
-                        <p style={{ color: 'red' }}>{input.user}</p> 
-                        <p style={{ color: 'red' }}>{input.content} </p>
+                    <div className="currentUserSet">
+                        <p className="currentUserName">{input.user}</p> 
+                        <p className="currentUserContent">{input.content} </p>
                     </div>
-                    : <div>
-                        <p>{input.user}</p> 
-                        <p>{input.content} </p>
+                    : <div className="otherUserSet">
+                        <p className="otherUserName">{input.user}</p> 
+                        <p className="otherUserContent">{input.content} </p>
                     </div>}
-            
-                {/* {input.user ? 
-                    <div>
-                    <p>{input.user.name}</p> 
-                    <p>{input.content} </p>
-                    </div>
-                    : <p>{input.content} </p>} */}
-                </div>
+                </>
             ));
         }
     }
@@ -169,8 +128,13 @@ const ConversationShow = () => {
     return (
         <>
             <div>
-                <h1>Conversation with | {generateUserList(userArray)}</h1>
-                {generateMessageList(conversation.messages)}
+                <h1>Conversation with {generateUserList(userArray)}</h1>
+                
+                {/* <h1>Conversation between {conversation.user[0].username} and {conversation.user[1].username}</h1> */}
+                <div className="conversationContainer">
+                    {generateMessageList(conversation.messages)}
+                </div>
+                
                 {/* <div>{generateMessageList(messageArray)} </div> */}
                 {/* {JSON.stringify(conversation, null, 2)} */}
                 {/* <h2>{conversation.user[0].name}</h2> */}
@@ -182,7 +146,7 @@ const ConversationShow = () => {
 					{/* <label htmlFor='content'>Content</label> */}
 					<input type='text'
 						name='content'
-                        className='form-control'
+                        className='form-control messageBox'
                         placeholder='Message'
 						onChange={(e) => setContent(e.target.value)}
 						value={content}

@@ -55,7 +55,7 @@ const Profile = () => {
                     }
                 }
             }
-
+            console.log(convoList)
             return convoList.map((conversation, index) => (
                 <Link to={`/conversations/${conversation._id}`}>
                     <h3>{conversation.name}</h3>
