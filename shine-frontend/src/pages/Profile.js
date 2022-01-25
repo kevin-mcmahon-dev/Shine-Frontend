@@ -6,6 +6,7 @@ const Profile = () => {
     const [user, setUser] = useState("");
     const [users, setUsers] = useState("");
     const [content, setContent] = useState({});
+    const [search, setSearch] = useState("");
 
     let convoCreationUsers = {
         user: [`${user._id}`, `${content}`]
@@ -112,6 +113,16 @@ const Profile = () => {
         fetchUser()
     }
 
+    function handleSearch(event) {
+        event.preventDefault();
+
+        authorizationModel.profileSearch(search).then((response) => {
+            console.log(search)
+            console.log(response)
+        })
+        fetchUser()
+    }
+    console.log(search)
     return (
     <>
         <div>
@@ -122,12 +133,24 @@ const Profile = () => {
             {/* <ul>
                 {generateUserList(users)}
             </ul> */}
-            <form onSubmit={(event) => handleSubmit(event)}>
+
+            {/* Search Form */}
+                {/* <label htmlFor="search">Find Other Users!</label> */}
+                <input type="text" 
+                placeholder="Search by Username"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}/>
+                <button type="button"
+                onClick={handleSearch}></button>
+            
+            
+            {/* Radial Form */}
+            {/* <form onSubmit={(event) => handleSubmit(event)}>
                 <div className='input-field'>
                     {generateUserList(users)}
 			    </div>
                 <input type='submit' value='Start Talking!' />
-            </form>
+            </form> */}
         </div>
     </>
     );

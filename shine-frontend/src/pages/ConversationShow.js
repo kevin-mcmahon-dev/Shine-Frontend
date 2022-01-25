@@ -34,7 +34,7 @@ const ConversationShow = () => {
     }
 
     function fetchContent() {
-        setContent("Enter Message")
+        setContent("")
     }
 
     function fetchUser() {
@@ -121,7 +121,7 @@ const ConversationShow = () => {
 					<input type='text'
 						name='content'
                         className='form-control messageBox'
-                        placeholder='Message'
+                        placeholder='Enter Message'
 						onChange={(e) => setContent(e.target.value)}
 						value={content}
 					/>
