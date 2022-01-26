@@ -60,8 +60,9 @@ class authorizationModel {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
+                "Accept": "application/json"
             },
-            body: JSON.stringify({"content": data})
+            body: JSON.stringify({"username": data})
         }).then((res) => {
             console.log(res)
             res.json()

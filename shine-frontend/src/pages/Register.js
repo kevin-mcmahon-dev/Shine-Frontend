@@ -51,7 +51,7 @@ const NewUser = () => {
 				</div>
 				<div className='form-group'>
 					<label htmlFor='password'>Password</label>
-					<input type='text'
+					<input type='password'
 						className='form-control'
 						name='password'
 						onChange={(e) => setPassword(e.target.value)}

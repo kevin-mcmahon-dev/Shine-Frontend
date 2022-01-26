@@ -122,7 +122,7 @@ const Profile = () => {
         })
         fetchUser()
     }
-    console.log(search)
+    console.log(typeof search)
     return (
     <>
         <div>
