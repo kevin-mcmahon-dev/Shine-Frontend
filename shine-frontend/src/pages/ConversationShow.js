@@ -18,6 +18,7 @@ const ConversationShow = () => {
         fetchConversation()
         fetchUser()
         fetchContent()
+        updateScroll()
     }, [])
 
     useEffect(function() {
@@ -107,13 +108,20 @@ const ConversationShow = () => {
         })
     }
 
+    function updateScroll() {
+        let container = document.getElementById("conversationContainer")
+        container.scrollTop = container.scrollHeight;
+    }
+
     return (
         <>
             <div>
                 <h1>Conversation with {generateUserList(userArray)}</h1>
-                <div className="conversationContainer">
-                    {generateMessageList(conversation.messages)}
-                </div>
+                    {/* <div className="outerContainer"> */}
+                    <div className="conversationContainer" id="conversationContainer">
+                        {generateMessageList(conversation.messages)}
+                    </div>
+                    {/* </div> */}
             </div>
 
             <form onSubmit={(event) => handleSubmit(event)}>
