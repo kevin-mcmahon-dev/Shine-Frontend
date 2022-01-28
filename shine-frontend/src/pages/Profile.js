@@ -119,56 +119,29 @@ const Profile = () => {
     console.log(content)
 
     function handleSubmit(event) {
-        // event.preventDefault();
-
+        event.preventDefault();
+        
         authorizationModel.conversationCreate(convoCreationUsers).then((response) => {
             authorizationModel.accountUpdate()
         })
+        
         fetchUser()
         generateList(conversationArray)
     }
 
-    // function handleSearch(event) {
-    //     event.preventDefault();
-
-    //     authorizationModel.profileSearch(search).then((response) => {
-    //         console.log(search)
-    //         console.log(response)
-    //     })
-    //     fetchUser()
-    // }
-    // console.log(typeof search)
-
     return (
     <>
         <div>
-            <h1>Welcome to {user.username} Account!</h1>
-            <h4>Name: {user.name}</h4>
+            <h1>Welcome to Shine {user.username}!</h1>
             {generateList(conversationArray)}
-            <h2>All Users:</h2>
-            {/* <ul>
-                {generateUserList(users)}
-            </ul> */}
+            <h2>Find Users to Chat With:</h2>
 
-            {/* Search Form */}
-                {/* <label htmlFor="search">Find Other Users!</label> */}
-                {/* <form onSubmit={(event) => generateUserList(users, search)}> */}
-                <input type="text" 
-                placeholder="Search by Username"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}/>
-                {/* <button type="submit">Search</button> */}
-                {generateUserList(users, search)}
-                {/* </form> */}
-            
-            
-            {/* Radial Form */}
-            {/* <form onSubmit={(event) => handleSubmit(event)}>
-                <div className='input-field'>
-                    {generateUserList(users)}
-			    </div>
-                <input type='submit' value='Start Talking!' />
-            </form> */}
+            <input type="text" 
+            placeholder="Search by Username"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}/>
+
+            {generateUserList(users, search)}
         </div>
     </>
     );
