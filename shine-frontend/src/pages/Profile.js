@@ -106,8 +106,11 @@ const Profile = () => {
                         {filteredUsers.map(input => {
                             return (
                             <form onSubmit={(event) => handleSubmit(event)}>
-                                <button type="submit" value={input._id} onClick={(e) => setContent(e.target.value)}>{input.username}</button>
-                                {/* <input type='submit' placeholder='test' value={input.username} /> */}
+                                <button type="submit" 
+                                    value={input._id} 
+                                    onClick={(e) => setContent(e.target.value)}>
+                                    {input.username}
+                                </button>
                             </form>
                             // <button className="searchResult" onSubmit={(event) => handleSubmit(event)}>{input.username}</button>
                             //             {/* <form onSubmit={(event) => handleSubmit(event)}>

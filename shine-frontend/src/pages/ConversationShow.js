@@ -91,12 +91,13 @@ const ConversationShow = () => {
 
     function handleSubmit(event) {
         event.preventDefault();
-
-        DataModel.createMessage(id, content).then((response) => {
-            fetchConversation()
-            fetchUser()
-            fetchContent()
-        })
+        if (content !== "") {
+            DataModel.createMessage(id, content).then((response) => {
+                fetchConversation()
+                fetchUser()
+                fetchContent()
+            })
+        }
     }
 
     function handleDelete(event) {
