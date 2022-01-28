@@ -12,10 +12,6 @@ const Profile = () => {
         user: [`${user._id}`, `${content}`]
     }
 
-    console.log(user);
-    console.log(content);
-    console.log(users);
-
     useEffect(function() {
         fetchUser()
     }, [])
@@ -24,13 +20,14 @@ const Profile = () => {
         authorizationModel.profile().then((data) => {
             setUser(data.user);
             setUsers(data.users);
+            console.log(data.users)
         })
     }
 
     const conversationArray = user.conversation;
-
+    console.log(conversationArray)
+    console.log(users)
     function generateList(input) {
-        // console.log(user.conversation)
         if (input) {
             let userList = new Set()
             let convoList = []
@@ -45,42 +42,14 @@ const Profile = () => {
                     }
                 }
             }
-            console.log(convoList)
+
             return convoList.map((conversation, index) => (
                 <Link to={`/conversations/${conversation._id}`}>
-                    <h3>{conversation.name}</h3>
+                    <h3>Conversation with {conversation.name}</h3>
                 </Link>
             ));
         }
-        // fetchUser()
     }
-    
-    // function generateUserList(input) {
-    //     if (input) {
-    //         return input.map((profile, index) => (
-    //             // <>
-    //             // {/* {profile.username !== user.username ? profile.username : ""} */}
-    //             // {(profile.username !== user.username) && <li>{profile.username}</li> }
-    //             // </>
-    //             // // {if (profile.username !== user.username) {
-    //             // //     <li>{profile.username}</li>
-    //             // // } else {
-    //             // //     <li></li>
-    //             // // }}
-    //         <>
-    //             {(profile.username !== user.username) && 
-    //             <>
-    //                 <input type='radio'
-    //                 name='content'
-    //                 onChange={(e) => setContent(e.target.value)}
-    //                 value={profile._id}/>
-    //                 <label>{profile.username}</label>
-    //             </>}
-    //             {/* {content} */}
-    //         </>
-    //         ));
-    //     }
-    // }
 
     function generateUserList(users, search) {
         if (users) {
@@ -89,26 +58,20 @@ const Profile = () => {
                 const username = user.username.toLowerCase();
                 return username.includes(search)
             })
-
+            console.log(content)
+            console.log(search)
             if (search !== "") {
                 return (
                     <>
                         {filteredUsers.map(input => {
                             return (
-                            <form onSubmit={(event) => handleSubmit(event)}>
-                                <button type="submit" 
-                                    value={input._id} 
-                                    onClick={(e) => setContent(e.target.value)}>
-                                    {input.username}
-                                </button>
-                            </form>
-                            // <button className="searchResult" onSubmit={(event) => handleSubmit(event)}>{input.username}</button>
-                            //             {/* <form onSubmit={(event) => handleSubmit(event)}>
-                            //     <div className='input-field'>
-                            //         {generateUserList(users)}
-			                //     </div>
-                            //     <input type='submit' value='Start Talking!' />
-                            // </form> */}
+                                <form onSubmit={(event) => handleSubmit(event)}>
+                                    <button type="submit" 
+                                        value={input._id} 
+                                        onClick={(e) => setContent(e.target.value)}>
+                                        {input.username}
+                                    </button>
+                                </form>
                             )
                         })}
                     </>
@@ -120,15 +83,23 @@ const Profile = () => {
 
     function handleSubmit(event) {
         event.preventDefault();
-        
+
         authorizationModel.conversationCreate(convoCreationUsers).then((response) => {
             authorizationModel.accountUpdate()
+            // generateList(conversationArray)
+            // fetchUser()
         })
-        
-        fetchUser()
+
         generateList(conversationArray)
+        fetchUser()
+        // setUser(user)
+        // reload()
     }
 
+    // function reload() {
+    //     window.location.reload()
+    // }
+    
     return (
     <>
         <div>
@@ -140,7 +111,8 @@ const Profile = () => {
             placeholder="Search by Username"
             value={search}
             onChange={(e) => setSearch(e.target.value)}/>
-
+            {/* {search !== "" ? generateUserList(users, search) : null} */}
+            {/* {if ({search} !== "") {generateUserList(users, search)}} */}
             {generateUserList(users, search)}
         </div>
     </>
