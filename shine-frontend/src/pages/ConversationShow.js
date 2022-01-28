@@ -108,11 +108,7 @@ const ConversationShow = () => {
         })
     }
 
-    // function updateScroll() {
-    //     let container = document.getElementById("conversationContainer")
-    //     container.scrollTop = container.scrollHeight;
-    // }
-    // updateScroll()
+
     return (
         <>
             <div>
@@ -136,9 +132,34 @@ const ConversationShow = () => {
 				</div>
                 <button type='submit' className='btn btn-primary'>Send Message</button>
             </form>
-            <form onSubmit={(event) => handleDelete(event)}>
-                <button type='submit' className='btn btn-danger'>Delete Conversation</button>
-            </form>
+            {/* <form onSubmit={(event) => handleDelete(event)}> */}
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
+                    Delete Conversation
+                </button>
+                    {/* <button type='submit' className='btn btn-danger'>Delete Conversation</button> */}
+            {/* </form> */}
+
+            <div className="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                <div className="modal-dialog" role="document">
+                  <div className="modal-content">
+                    <div className="modal-header">
+                      <h5 className="modal-title" id="deleteModalLabel">Delete Conversation</h5>
+                      <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div className="modal-body">
+                        Are you sure you want to delete this conversation? It will be deleted for all users and cannot be recovered.
+                    </div>
+                    <div className="modal-footer">
+                      <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <form onSubmit={(event) => handleDelete(event)}>
+                        <button type='submit' className='btn btn-danger'>Delete</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+            </div>
         </>
     );
 }

@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 import authorizationModel from '../models/authorization';
-import {BrowserRouter as Router, useParams, Link} from "react-router-dom";
+import {BrowserRouter as Router, useParams, useNavigate, Link} from "react-router-dom";
 
 const Profile = () => {
     const [user, setUser] = useState("");
@@ -11,6 +11,7 @@ const Profile = () => {
     let convoCreationUsers = {
         user: [`${user._id}`, `${content}`]
     }
+
     console.log(user);
     console.log(content);
     console.log(users);
@@ -27,17 +28,6 @@ const Profile = () => {
     }
 
     const conversationArray = user.conversation;
-    console.log(conversationArray)
-    // Trying to remove duplicate convo entries
-    // let conversationArray = new Set()
-    // let userArray
-
-    // for (let i = 0; i < user.conversation.length; i++) {
-    //     conversationArray.add(user.converation[i].user)
-    //     userArray = conversationArray.from(conversationArray)
-    // }
-    // console.log(conversationArray)
-    // console.log(userArray)
 
     function generateList(input) {
         // console.log(user.conversation)
@@ -129,24 +119,13 @@ const Profile = () => {
     console.log(content)
 
     function handleSubmit(event) {
-        event.preventDefault();
+        // event.preventDefault();
 
-        // (id, {content: "hello"})
-        // authorizationModel.conversationCreate(user._id, content) --> two params instead?
         authorizationModel.conversationCreate(convoCreationUsers).then((response) => {
-            // content = {
-            //     user: [user._id, ]
-            // }
-            // console.log(response.conversation._id);
-            // console.log(response.conversation.user);
-            // console.log(response)
-            // newConvoId = response.conversation._id
-            console.log(content);
             authorizationModel.accountUpdate()
-            // fetchUser() /* redundant */
         })
-
         fetchUser()
+        generateList(conversationArray)
     }
 
     // function handleSearch(event) {
