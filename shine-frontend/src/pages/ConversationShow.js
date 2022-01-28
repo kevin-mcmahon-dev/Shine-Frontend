@@ -18,7 +18,6 @@ const ConversationShow = () => {
         fetchConversation()
         fetchUser()
         fetchContent()
-        updateScroll()
     }, [])
 
     useEffect(function() {
@@ -108,11 +107,11 @@ const ConversationShow = () => {
         })
     }
 
-    function updateScroll() {
-        let container = document.getElementById("conversationContainer")
-        container.scrollTop = container.scrollHeight;
-    }
-
+    // function updateScroll() {
+    //     let container = document.getElementById("conversationContainer")
+    //     container.scrollTop = container.scrollHeight;
+    // }
+    // updateScroll()
     return (
         <>
             <div>
