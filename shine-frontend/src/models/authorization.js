@@ -53,6 +53,21 @@ class authorizationModel {
             body: JSON.stringify(data)
         }).then((res) => res.json());
     }
+
+    static profileSearch = (data) => {
+        console.log(typeof data)
+        return fetch(`${url}/profiles`, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({"username": data})
+        }).then((res) => {
+            console.log(res)
+            res.json()
+        });
+    }
 }
     
 export default authorizationModel;

@@ -4,7 +4,8 @@ const Home = () => {
   return (
     <>
     <div>
-      <h1>Welcome to Shine!</h1>
+      <img className='logoLarge' src="/logo-light.png" alt="logo"></img>
+      <h1>SHINE</h1>
     </div>
     </>
   );

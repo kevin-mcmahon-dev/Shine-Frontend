@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import authorizationModel from '../models/authorization';
 import { useNavigate } from 'react-router-dom';
+import "./Login.css"
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -23,25 +24,26 @@ const Login = () => {
     
     return (
         <>
-            <h2>Login</h2>
-            <form onSubmit={handleSubmit}>
-                <div className='input-field'>
+            <form className='userEntryForm' onSubmit={handleSubmit}>
+                <div className='form-group'>
 					<label htmlFor='email'>Email</label>
 					<input type='text'
+                        className='form-control'
 						name='email'
 						onChange={(e) => setEmail(e.target.value)}
 						value={email}
 					/>
 				</div>
-                <div className='input-field'>
+                <div className='form-group'>
 					<label htmlFor='password'>Password</label>
-					<input type='text'
+					<input type='password'
+                        className='form-control'
 						name='password'
 						onChange={(e) => setPassword(e.target.value)}
 						value={password}
 					/>
 				</div>
-                <input type='submit' value='Login' />
+                <button type='submit' className='btn btn-primary'>Login</button>
             </form>
         </>
     );

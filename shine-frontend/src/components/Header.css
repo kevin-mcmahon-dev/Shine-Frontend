@@ -1,31 +1,41 @@
-header {
+/* header {
     background-color: blue;
     display: flex;
     flex-direction: row;
     height: 60px;
+} */
+.navbar-bg {
+    background-color: black;
 }
-.logo {
-    /* width: 50%; */
-    align-self: center;
-    /* justify-content: flex-start; */
-    flex-grow: 1;
+.logoSmall {
+    width: 4vw;
+    /* align-self: center;
+    flex-grow: 1; */
 }
-.logo span {
+.logoLarge {
+    width: 30vw;
+    margin-top: 8vh;
+}
+.nav-link {
+    font-size: 2vw;
+}
+
+/* .logo span {
     margin-right: 85%;
     text-decoration: none;
-}   
-.links {
+}    */
+/* .links { */
     /* width: 50%; */
-    align-self: center;
+    /*align-self: center;
 }
 .linkContainer {
     display: inline-block;
     margin-right: 15px;
-}
-.spanHeader{
+} */
+/* .spanHeader{
     color: white;
     text-decoration: none;
     font-size: 28px;
-    font-weight: bold;
+    font-weight: bold; */
     /* margin: 15px, 50px, 5px, 50px; */
-}
+/* } */
