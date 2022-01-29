@@ -6,13 +6,16 @@ const Header = () => {
 
   return (
     <header>
-      <nav className="navbar navbar-expand-lg navbar-dark navbar-bg">
+      <nav className="navbar navbar-expand-custom navbar-dark navbar-bg">
         <div className="navbar-brand">
           <Link to={`/`}>
             <div className='nav-link'><img className='logoSmall' src="/logo-dark.png" alt="logo"></img></div>
           </Link>
         </div>
-        <div className="collapse navbar-collapse w-100 order-1 order-md-0 dual-collapse2" id="navbarNav">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        {/* <div className="collapse navbar-collapse w-100 order-1 order-md-0 dual-collapse2" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
                 <Link style={{ textDecoration: 'none' }} to={`/`}>
@@ -20,8 +23,8 @@ const Header = () => {
                 </Link>
               </li>
             </ul>
-        </div>
-        <div className="collapse navbar-collapse w-100 order-3 dual-collapse2" id="navbarNav">
+        </div> */}
+        <div className="navbar-collapse collapse" id="collapsingNavbar">
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
               <Link style={{ textDecoration: 'none' }} to={`/register`}>
