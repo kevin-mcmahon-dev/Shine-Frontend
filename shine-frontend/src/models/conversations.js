@@ -1,5 +1,5 @@
 // const url = 'http://localhost:4000/api/v1/conversations'
-const url = 'http://shineserver.herokuapp.com/conversations'
+const url = 'https://shineserver.herokuapp.com/api/v1/conversations'
 
 class DataModel {
     static all = () => {
