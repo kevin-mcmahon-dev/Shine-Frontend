@@ -45,18 +45,18 @@ const Profile = () => {
                     }
                 }
             }
-            let idList = convoList.map(value => {
+            let nameList = convoList.map(value => {
                 if (value.user[0] === user._id) {
-                    return value.user[1]
+                    for (let i = 0; i < users.length; i++) {
+                        if (value.user[1] === users[i]._id) {
+                            return users[i].username
+                        }
+                    }
                 } else {
-                    return value.user[0]
-                }
-            })
-
-            let nameList = idList.map(value => {
-                for (let i = 0; i < users.length; i++) {
-                    if (value === users[i]._id) {
-                        return users[i].username
+                    for (let i = 0; i < users.length; i++) {
+                        if (value.user[0] === users[i]._id) {
+                            return users[i].username
+                        }
                     }
                 }
             })
