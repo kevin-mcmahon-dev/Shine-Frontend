@@ -18,18 +18,15 @@ const Profile = () => {
         fetchUser()
     }, [])
 
-    console.log(users[0])
     function fetchUser() {
         authorizationModel.profile().then((data) => {
             setUser(data.user);
             setUsers(data.users);
-            console.log(data.users)
         })
     }
 
     const conversationArray = user.conversation;
-    console.log(conversationArray)
-    console.log(users)
+
     function generateList(input) {
         if (input) {
             let userList = new Set()
@@ -81,8 +78,7 @@ const Profile = () => {
                 const lowercaseSearch = search.toLowerCase()
                 return username.includes(lowercaseSearch)
             })
-            console.log(content)
-            console.log(search)
+
             if (search !== "") {
                 return (
                     <>
@@ -90,6 +86,7 @@ const Profile = () => {
                             return (
                                 <form onSubmit={(event) => handleSubmit(event)}>
                                     <button type="submit" 
+                                        className="btn btn-primary"
                                         value={input._id} 
                                         onClick={(e) => setContent(e.target.value)}>
                                         {input.username}
@@ -102,26 +99,17 @@ const Profile = () => {
             }
         }
     }
-    console.log(content)
 
     function handleSubmit(event) {
         event.preventDefault();
 
         authorizationModel.conversationCreate(convoCreationUsers).then((response) => {
             authorizationModel.accountUpdate()
-            // generateList(conversationArray)
-            // fetchUser()
         })
 
         generateList(conversationArray)
         fetchUser()
-        // setUser(user)
-        // reload()
     }
-
-    // function reload() {
-    //     window.location.reload()
-    // }
     
     return (
     <>
