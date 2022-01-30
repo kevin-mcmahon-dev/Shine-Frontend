@@ -12,12 +12,13 @@ const Login = () => {
         event.preventDefault();
 
         authorizationModel.login({ email, password}).then((response) => {
-            console.log(response);
             // localStorage.setItem("uid", response.signedJwt);
-            localStorage.setItem("uid", response.token);
+            // localStorage.setItem("uid", response.token);
             console.log(response.token);
             if (response.status === 200) {
+                localStorage.setItem("uid", response.token);
                 nav('/profile')
+                window.location.reload()
             }
         })
     }

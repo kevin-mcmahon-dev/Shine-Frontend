@@ -36,11 +36,12 @@ const Header = () => {
                 <div className='nav-link'><span>Login</span></div>
               </Link>
             </li>
+            {localStorage.getItem("uid") === null ? <></> :
             <li className="nav-item">
               <Link style={{ textDecoration: 'none' }} to={`/profile`}>
                 <div className='nav-link'><span>Profile</span></div>
               </Link>
-            </li>
+            </li>}
           </ul>
         </div>
       </nav>

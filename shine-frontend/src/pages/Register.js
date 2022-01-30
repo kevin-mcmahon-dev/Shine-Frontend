@@ -15,9 +15,12 @@ const NewUser = () => {
 		authorizationModel.register({username, name, email, password}).then((data) => {
 			console.log(data);
 			console.log(data.token);
-			localStorage.setItem("uid", data.token)
+			// localStorage.setItem("uid", data.token)
+
 			if (data.status === 200) {
+				localStorage.setItem("uid", data.token)
 				nav("/profile");
+				window.location.reload()
 			}
 		})
 	}

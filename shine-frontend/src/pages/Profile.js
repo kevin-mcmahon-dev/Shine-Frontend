@@ -12,6 +12,8 @@ const Profile = () => {
         user: [`${user._id}`, `${content}`]
     }
 
+    // console.log(localStorage.getItem("uid"));
+
     useEffect(function() {
         fetchUser()
     }, [])

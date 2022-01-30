@@ -21,6 +21,7 @@ const Routing = () => {
           <Route path='/conversations/:id' element={ <ConversationShow /> }/>
           <Route path='/login' element={ < Login /> }/>
           <Route path='/register' element={ < NewUser /> }/>
+          {/* {localStorage.getItem("uid") === null ? <Route path='/profile' element={ < Home /> }/> : <Route path='/profile' element={ < Profile /> }/>} */}
           <Route path='/profile' element={ < Profile /> }/>
         </Routes>
     )
