@@ -18,6 +18,7 @@ const Profile = () => {
         fetchUser()
     }, [])
 
+    console.log(users[0])
     function fetchUser() {
         authorizationModel.profile().then((data) => {
             setUser(data.user);
@@ -44,6 +45,25 @@ const Profile = () => {
                     }
                 }
             }
+            let idList = convoList.map(value => {
+                if (value.user[0] === user._id) {
+                    return value.user[1]
+                } else {
+                    return value.user[0]
+                }
+            })
+
+            let nameList = idList.map(value => {
+                for (let i = 0; i < users.length; i++) {
+                    if (value === users[i]._id) {
+                        return users[i].username
+                    }
+                }
+            })
+
+            convoList.forEach((value, index) => {
+                value.name = nameList[index]
+            })
 
             return convoList.map((conversation, index) => (
                 <Link to={`/conversations/${conversation._id}`}>
@@ -58,7 +78,8 @@ const Profile = () => {
 
             let filteredUsers = users.filter((user) => {
                 const username = user.username.toLowerCase();
-                return username.includes(search)
+                const lowercaseSearch = search.toLowerCase()
+                return username.includes(lowercaseSearch)
             })
             console.log(content)
             console.log(search)
