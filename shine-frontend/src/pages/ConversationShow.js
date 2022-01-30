@@ -14,22 +14,20 @@ const ConversationShow = () => {
     const userArray = conversation.user
 
     useEffect(function() {
-        console.log("I'm using Effect")
         fetchConversation()
         fetchUser()
         fetchContent()
     }, [])
 
     useEffect(function() {
-        console.log(conversation.messages)
         generateMessageList(conversation.messages)
-        console.log(conversation.messages)
     }, [conversation])
 
     function fetchConversation() {
         DataModel.conversationShow(id).then((data) => {
-            console.log(data.conversation);
+            // console.log(data.conversation);
             setConversation(data.conversation);
+
         })
     }
 
@@ -52,7 +50,7 @@ const ConversationShow = () => {
             ));
         }
     }
-    console.log(conversation.messages);
+
     const messageArray = conversation.messages
     
     function generateMessageList(inputMessages) {
