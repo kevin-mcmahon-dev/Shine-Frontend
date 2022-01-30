@@ -1,5 +1,5 @@
-// const url = 'http://localhost:4000/api/v1'
-const url = 'https://shineserver.herokuapp.com/api/v1'
+const url = 'http://localhost:4000/api/v1'
+// const url = 'https://shineserver.herokuapp.com/api/v1'
 
 class authorizationModel {
     static register = (data) => {

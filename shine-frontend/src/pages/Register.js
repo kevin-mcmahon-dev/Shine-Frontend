@@ -13,8 +13,11 @@ const NewUser = () => {
 	function handleSubmit(event) {
 		event.preventDefault();
 		authorizationModel.register({username, name, email, password}).then((data) => {
-			if (data.status === 201) {
-				nav("/");
+			console.log(data);
+			console.log(data.token);
+			localStorage.setItem("uid", data.token)
+			if (data.status === 200) {
+				nav("/profile");
 			}
 		})
 	}
